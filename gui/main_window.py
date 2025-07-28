@@ -3,14 +3,15 @@ from tkinter import messagebox
 import json
 import os
 
-DATA_PATH = os.path.join(os.path.dirname(__file__), '...', 'easy.json')
+DATA_PATH = os.path.join(os.path.dirname(__file__), '..', 'data','easy.json')
+DATA_PATH = os.path.abspath(DATA_PATH)
 
 def load_question():
     with open(DATA_PATH, 'r') as f:
         questions = json.load(f)
     return questions[0]
 
-def evaluate_answer(user_inpt, correct_answer):
+def evaluate_answer(user_input, correct_answer):
     return user_input.strip().lower() == correct_answer.strip().lower()
 
 def launch_app():
@@ -21,11 +22,12 @@ def launch_app():
     
     # Widgets
 
-    tk.Label(root, text="Pregunta del día:", font=("Helvetica", 16)).pack(pady=10)
-    tk.Label(root, text=question["question"], wraplength=100, font=("Helvetica", 12)).pack(pady=5)
+    tkinter.Label(root, text="Pregunta del día:", font=("Helvetica", 16)).pack(pady=10)
+    tkinter.Label(root, text=question["question"], wraplength=100, font=("Helvetica", 12)).pack(pady=5)
+    tkinter.Label(root, text="Elije una opción:", font=("Helvetica", 14)).pack(pady=10)
 
-    answer_var = tk.StringVar()
-    entry = tk.Entry(root, textvariable=answer_var, font=('Helvetica', 12), width=40)
+    answer_var = tkinter.StringVar()
+    entry = tkinter.Entry(root, textvariable=answer_var, font=('Helvetica', 12), width=40)
     entry.pack(pady=5)
     
     def on_submit():
@@ -35,6 +37,6 @@ def launch_app():
         else:
             messagebox.showerror("Resultado", f"❌ Incorrecto. La respuesta correcta era: {question['answer']}")
 
-    tk.Button(root, text="Verificar", command=on_submit, font=('Helvetica', 12)).pack(pady=10)
+    tkinter.Button(root, text="Verificar", command=on_submit, font=('Helvetica', 12)).pack(pady=10)
 
     root.mainloop()

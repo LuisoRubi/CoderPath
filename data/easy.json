@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "type": "text",
+        "question": "¿Cuál es la complejidad temporal del algoritmo de búsqueda binaria?",
+        "answer": "O(log n)",
+        "options": [
+            "O(n)",
+            "O(log n)",
+            "O(n^2)",
+            "O(1)"
+        ]
+    }
+]
